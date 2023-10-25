@@ -17,7 +17,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
  * steering and an Xbox controller.
  */
 public class Robot extends TimedRobot {
-  private final WPI_TalonFX m_leftMotor = new WPI_TalonFX(0);
+  private final WPI_TalonFX m_leftMotor = new WPI_TalonFX(1);
   private final WPI_TalonFX m_rightMotor = new WPI_TalonFX(3);
   private final DifferentialDrive m_robotDrive = new DifferentialDrive(m_leftMotor, m_rightMotor);
   private final XboxController m_driverController = new XboxController(0);
@@ -39,6 +39,8 @@ public class Robot extends TimedRobot {
     // moves the right side of the robot forward and backward.
 
     System.out.println("Right : " + m_driverController.getRightY() + " Left : " + m_driverController.getLeftY());
-    m_robotDrive.tankDrive(m_driverController.getLeftY(), m_driverController.getRightY());
+    m_robotDrive.arcadeDrive(m_driverController.getLeftY(), m_driverController.getRightX());
+    //m_robotDrive.tankDrive(m_driverController.getLeftY(), m_driverController.getRightY());
+    //use blue controller
   }
 }
